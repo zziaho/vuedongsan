@@ -5,17 +5,10 @@
   </div>
 
   <img alt="Vue logo" src="./assets/logo.png">
-  <div>
-    <h4 :style="blueFont">{{ products[0] }}</h4>
-    <p>{{ price1 }} 만원</p>
-  </div>
-  <div>
-    <h4>{{ products[1] }}</h4>
-    <p>{{ price2 }} 만원</p>
-  </div>
-  <div>
-    <h4>{{ products[2] }}</h4>
-    <p>70만원</p>
+
+  <div v-for="(product, index) in products" :key="index">
+    <h4>{{ product.name }}</h4>
+    <p>{{ product.price }}</p>
   </div>
   
 </template>
@@ -30,7 +23,20 @@ export default {
       price1: 30,
       price2: 50,
       blueFont: 'color : blue',
-      products: ['역삼동원룸', '천호동원롬', '마포구원룸'],
+      products: [
+        {
+          name: '역삼동원룸',
+          price: '30만원'
+        },
+        {
+          name: '천호동원룸',
+          price: '50만원'
+        },
+        {
+          name: '마포구원룸',
+          price: '70만원'
+        },
+      ],
       menus: ['Home', 'Shop', 'About'],
     }
   },
