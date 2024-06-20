@@ -9,6 +9,7 @@
   <div v-for="(product, index) in products" :key="index">
     <h4>{{ product.name }}</h4>
     <p>{{ product.price }}</p>
+    <button @:click="increseReportCnt">허위매물신고</button> <span>신고수 : {{ reportCnt }}</span>
   </div>
   
 </template>
@@ -38,7 +39,13 @@ export default {
         },
       ],
       menus: ['Home', 'Shop', 'About'],
+      reportCnt: 0,
     }
+  },
+  methods: {
+    increseReportCnt() {
+      this.reportCnt++;
+    },
   },
   components: {
   }
