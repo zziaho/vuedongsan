@@ -9,7 +9,7 @@
   <div v-for="(product, index) in products" :key="index">
     <h4>{{ product.name }}</h4>
     <p>{{ product.price }}</p>
-    <button @:click="increseReportCnt">허위매물신고</button> <span>신고수 : {{ reportCnt }}</span>
+    <button @:click="increseReportCnt(index)">허위매물신고</button> <span>신고수 : {{ product.reportCnt }}</span>
   </div>
   
 </template>
@@ -21,21 +21,21 @@ export default {
   name: 'App',
   data() {
     return {
-      price1: 30,
-      price2: 50,
-      blueFont: 'color : blue',
       products: [
         {
           name: '역삼동원룸',
-          price: '30만원'
+          price: '30만원',
+          reportCnt: 0,
         },
         {
           name: '천호동원룸',
-          price: '50만원'
+          price: '50만원',
+          reportCnt: 0,
         },
         {
           name: '마포구원룸',
-          price: '70만원'
+          price: '70만원',
+          reportCnt: 0,
         },
       ],
       menus: ['Home', 'Shop', 'About'],
@@ -43,8 +43,8 @@ export default {
     }
   },
   methods: {
-    increseReportCnt() {
-      this.reportCnt++;
+    increseReportCnt(index) {
+      this.products[index].reportCnt += 1;
     },
   },
   components: {
