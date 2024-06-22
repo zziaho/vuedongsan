@@ -4,6 +4,7 @@
     <div class="white-bg">
       <h4>상세페이지</h4>
       <p>상세페이지 내용</p>
+      <button @click="closeModal">닫기</button>
     </div>
   </div>
 
@@ -14,9 +15,9 @@
 
   <div v-for="(product, index) in products" :key="index">
     <img :src="(require(`./assets/room${index}.jpg`))" class="room-img">
-    <h4 @click="modalOpen">{{ product.name }}</h4>
+    <h4 @click="openModal">{{ product.name }}</h4>
     <p>{{ product.price }}</p>
-    <button @:click="increseReportCnt(index)">허위매물신고</button>
+    <button @click="increseReportCnt(index)">허위매물신고</button>
     <span>신고수 : {{ product.reportCnt }}</span>
   </div>
   
@@ -60,9 +61,12 @@ export default {
     increseReportCnt(index) {
       this.products[index].reportCnt += 1;
     },
-    modalOpen() {
+    openModal() {
       this.isModalOpen = true;
-    }
+    },
+    closeModal() {
+      this.isModalOpen = false;
+    },
   },
   components: {
   }
