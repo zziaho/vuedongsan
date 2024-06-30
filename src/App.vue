@@ -13,18 +13,25 @@
   </div>
 
 
-  <div v-for="(product, index) in products" :key="index">
+  <!-- <div v-for="(product, index) in products" :key="index">
     <img :src="(require(`./assets/room${index}.jpg`))" class="room-img">
     <h4 @click="openModal">{{ product.name }}</h4>
     <p>{{ product.price }}</p>
     <button @click="increseReportCnt(index)">허위매물신고</button>
     <span>신고수 : {{ product.reportCnt }}</span>
+  </div> -->
+
+  <div v-for="(oneRoom, index) in oneRooms" :key="index">
+    <img :src="oneRoom.image" class="room-img">
+    <h4>{{ oneRoom.title }}</h4>
+    <p>{{ oneRoom.price }}</p>
   </div>
   
 </template>
 
 <script>
 
+import oneRoomList from './data/list.js';
 
 export default {
   name: 'App',
@@ -55,6 +62,7 @@ export default {
       ],
       menus: ['Home', 'Shop', 'About'],
       isModalOpen: false,
+      oneRooms: oneRoomList,
     }
   },
   methods: {
